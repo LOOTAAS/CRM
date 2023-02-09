@@ -233,7 +233,7 @@
   // удаляю объект по id из сервера
   async function deleteClientAfterConfirm(itemID, itemsNode, buttonsInModal) {
     async function deleteTodoItem() {
-      const response = await fetch(`https://lootaas.github.io/CRM/api/clients/${itemID}`, {
+      const response = await fetch(`http://localhost:3000/api/clients/${itemID}`, {
         method: 'DELETE',
       });
       if (response.status === 404) {
@@ -924,7 +924,7 @@
 
   // Вывод всех клиентов из сервера
   const outputItemsFromApi = async () => {
-    const response = await fetch('https://lootaas.github.io/CRM/api/clients');
+    const response = await fetch('http://localhost:3000/api/clients');
     const data = await response.json();
 
     // console.log(data, 'datadfsdf')
@@ -938,7 +938,7 @@
   // Вывод одного клиента из сервера для добавления нового
   const outputItemFromApi = async () => {
     // debugger
-    const response = await fetch('https://lootaas.github.io/CRM/api/clients');
+    const response = await fetch('http://localhost:3000/api/clients');
     const data = await response.json();
     const dataLastArray = await data[data.length - 1]
     document.querySelector(".main__item-header").after(outputItem(dataLastArray))
@@ -946,7 +946,7 @@
 
   // Вывод одного клиента из сервера для добавления нового
   const outputItemFromApiChangeClient = async (itemID, itemsNode) => {
-    const response = await fetch(`https://lootaas.github.io/CRM/api/clients/${itemID}`);
+    const response = await fetch(`http://localhost:3000/api/clients/${itemID}`);
     const data = await response.json();
     console.log(data, 'изменияемый клиент')
     itemsNode.after(outputItem(data))
@@ -1057,7 +1057,7 @@
     let former = parseClientForServer(selectorsGreen)
 
 
-    const response = await fetch('https://lootaas.github.io/CRM/api/clients', {
+    const response = await fetch('http://localhost:3000/api/clients', {
       method: 'POST',
       headers: { 'Content-Type': 'Application/json' },
       body: JSON.stringify({
@@ -1078,7 +1078,7 @@
 
     console.log(former, 'former')
 
-    const response = await fetch(`https://lootaas.github.io/CRM/api/clients/${itemID}`, {
+    const response = await fetch(`http://localhost:3000/api/clients/${itemID}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'Application/json' },
       body: JSON.stringify({
@@ -1116,7 +1116,7 @@
     // Костыль для кастомного селекта, что бы нормально отображались списки (не перекрывали нижние верхних)
     let counterForZIndex = 100
 
-    const response = await fetch(`https://lootaas.github.io/CRM/api/clients/${itemID}`);
+    const response = await fetch(`http://localhost:3000/api/clients/${itemID}`);
     const data = await response.json();
 
     let lastName = document.querySelector('.modal-create__input-lastname')
