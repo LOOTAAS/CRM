@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  },
+  "scripts": {
+    "predeploy": "node index.js",
+    "deploy": "gh-pages -d node index.js"
+  }
+}
